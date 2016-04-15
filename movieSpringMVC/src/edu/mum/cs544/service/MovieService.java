@@ -2,12 +2,17 @@ package edu.mum.cs544.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import edu.mum.cs544.DAO.IMovieDAO;
 import edu.mum.cs544.model.Movie;
 
+@Service
 public class MovieService<T> {
 
 	@SuppressWarnings("rawtypes")
+	@Autowired
 	private IMovieDAO MovieDao;
 	
 	public MovieService(){}

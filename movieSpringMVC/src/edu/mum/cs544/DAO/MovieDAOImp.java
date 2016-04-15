@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.mum.cs544.model.Movie;
 import edu.mum.cs544.repository.MovieRepository;
 
-@Component
+@Service
 @Transactional(readOnly = true)
 public class MovieDAOImp implements IMovieDAO {
 	

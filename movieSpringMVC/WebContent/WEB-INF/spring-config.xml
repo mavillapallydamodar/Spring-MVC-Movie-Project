@@ -20,13 +20,13 @@
   http://www.springframework.org/schema/context 
   http://www.springframework.org/schema/context/spring-context-3.2.xsd">  
   
- <context:component-scan base-package="edu.mum.cs544" />  
-<!--  <context:property-placeholder location="classpath:database.properties" />   -->
+ <context:component-scan base-package="edu.mum.cs544" />
+ 
  <mvc:annotation-driven />  
   
   <tx:annotation-driven transaction-manager="transactionManager"/>
   
-   <jpa:repositories base-package="br.com.maltempi.learningspring.repository" />
+   <jpa:repositories base-package="edu.mum.cs544.repository" />
    
  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -35,13 +35,6 @@
 		<property name="password" value="mumsql" />
 	</bean>
   
-<!--  <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">                   -->
-<!-- 		<property name="dataSource" ref="dataSource" /> -->
-<!-- 		<property name="hibernateProperties" ref="hibernateProperties" /> -->
-<!-- 		<property name="packagesToScan" value="edu.mum.cs544.model" /> -->
-<!-- 	</bean> -->
-  
- 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
@@ -64,28 +57,10 @@
 	  <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"/>
 	</bean>
 
-<!--   <bean id="jpaProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean"> -->
-<!-- 		<property name="properties"> -->
-<!-- 			<props>         -->
-<!-- 				<prop key="hibernate.hbm2ddl.auto">update</prop> -->
-<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop> -->
-<!-- 				<prop key="connection.pool.size">1</prop> -->
-<!-- 				<prop key="hibernate.show_sql">true</prop> -->
-<!-- 			</props> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
-	
-<!--  <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"> -->
-<!-- 	      <property name="sessionFactory" ref="sessionFactory" /> -->
-<!-- 	   </bean>   -->
-
 <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
   
-<!--  <bean id="persistenceExceptionTranslationPostProcessor"   -->
-<!--   class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />   -->
-    
  <bean  
   class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
   <property name="prefix">  
@@ -95,16 +70,5 @@
    <value>.jsp</value>  
   </property>  
  </bean>  
-  
-  
- 	<bean id="movieDao" class="edu.mum.cs544.DAO.MovieDAOImp">
-		<property name="sf" ref="sessionFactory" />
-	</bean>
-		
-	<bean id="movieService" class="edu.mum.cs544.service.MovieService">
-		<property name="MovieDao" ref="movieDao" />
-	</bean>  
-	
-	<bean id="repository" class="edu.mum.cs544.repository.MovieRepository" />
   
 </beans>  
