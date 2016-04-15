@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.mum.cs544.model.Movie;
 import edu.mum.cs544.repository.MovieRepository;
 
-@Service
+@Component
 @Transactional(readOnly = true)
 public class MovieDAOImp implements IMovieDAO {
 	

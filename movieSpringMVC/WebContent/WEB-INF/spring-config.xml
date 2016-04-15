@@ -104,5 +104,7 @@
 	<bean id="movieService" class="edu.mum.cs544.service.MovieService">
 		<property name="MovieDao" ref="movieDao" />
 	</bean>  
+	
+	<bean id="repository" class="edu.mum.cs544.repository.MovieRepository" />
   
 </beans>  
